@@ -281,3 +281,69 @@ a{color:inherit;text-decoration:none}
   stroke-linejoin:round;
 }
 .hero-note .tiny-flower{display:none}
+
+
+/* Animacoes infantis delicadas: borboleta, brilhos, fotos e botoes */
+.hero-butterfly,.hero-sparkle{
+  position:absolute;
+  z-index:2;
+  pointer-events:none;
+  user-select:none;
+}
+.hero-butterfly{
+  top:13%;
+  right:7%;
+  font-size:clamp(24px,3vw,34px);
+  filter:drop-shadow(0 3px 4px rgba(92,111,70,.12));
+  animation:butterfly-drift 7s ease-in-out infinite;
+}
+.hero-sparkle{
+  color:#a5a96e;
+  text-shadow:0 0 10px rgba(190,190,130,.35);
+}
+.sparkle-one{
+  top:23%;
+  left:48%;
+  font-size:23px;
+  animation:sparkle-twinkle 3.2s ease-in-out infinite;
+}
+.sparkle-two{
+  right:5%;
+  bottom:18%;
+  font-size:29px;
+  animation:sparkle-twinkle 4s ease-in-out infinite .7s;
+}
+@keyframes butterfly-drift{
+  0%,100%{transform:translate(0,0) rotate(-7deg)}
+  50%{transform:translate(-13px,-17px) rotate(8deg)}
+}
+@keyframes sparkle-twinkle{
+  0%,100%{opacity:.35;transform:scale(.78) rotate(0)}
+  50%{opacity:1;transform:scale(1.12) rotate(18deg)}
+}
+.product-card img,.hero-photo>img,.story-photo img{
+  transition:transform .55s cubic-bezier(.2,.7,.25,1);
+}
+.product-card:hover img,.product-card:focus-within img,
+.hero-photo:hover>img,.story-photo:hover img{
+  transform:scale(1.045);
+}
+.button,.nav-cta,.visit-link,.google-reviews-link{
+  transition:background-color .25s ease,color .25s ease,transform .25s ease,box-shadow .25s ease;
+}
+.button:hover,.nav-cta:hover{
+  transform:translateY(-3px);
+  box-shadow:0 7px 18px rgba(67,91,65,.14);
+}
+.button:active,.product-card:active img,.hero-photo:active>img{
+  transform:scale(.985);
+}
+@media(max-width:760px){
+  .hero-butterfly{top:5%;right:8%;font-size:25px}
+  .sparkle-one{top:43%;left:auto;right:8%;font-size:19px}
+  .sparkle-two{right:3%;bottom:9%;font-size:23px}
+}
+@media(prefers-reduced-motion:reduce){
+  .hero-butterfly,.hero-sparkle{animation:none}
+  .product-card img,.hero-photo>img,.story-photo img,.button,.nav-cta{transition:none}
+}
