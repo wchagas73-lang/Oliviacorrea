@@ -492,3 +492,83 @@ a{color:inherit;text-decoration:none}
  .butterfly-five{top:5%;left:8%;font-size:18px}
  .hero-photo-caption{left:11px;right:11px;bottom:11px;padding:10px 13px}
 }
+
+
+/* Borboletas espalhadas com leveza por todas as secoes */
+.intro,.collection,.brand-story,.reviews,.faq,.visit,.footer{position:relative}
+.site-butterfly{
+  position:absolute;
+  z-index:2;
+  display:block;
+  pointer-events:none;
+  user-select:none;
+  font-size:clamp(21px,2.8vw,32px);
+  opacity:.78;
+  filter:drop-shadow(0 4px 6px rgba(65,88,57,.16));
+  animation:site-butterfly-float 8s ease-in-out infinite;
+}
+.site-butterfly:nth-of-type(even){animation-name:site-butterfly-float-reverse;animation-duration:9.5s}
+@keyframes site-butterfly-float{
+  0%,100%{transform:translate(0,0) rotate(-12deg)}
+  35%{transform:translate(17px,-16px) rotate(9deg)}
+  70%{transform:translate(-11px,13px) rotate(-5deg)}
+}
+@keyframes site-butterfly-float-reverse{
+  0%,100%{transform:translate(0,0) rotate(10deg)}
+  35%{transform:translate(-16px,15px) rotate(-9deg)}
+  70%{transform:translate(13px,-12px) rotate(7deg)}
+}
+.sb-intro-a{top:18%;right:7%}
+.sb-intro-b{bottom:12%;left:8%;font-size:22px}
+.sb-collection-a{top:7%;right:2%}
+.sb-collection-b{bottom:5%;left:1%;font-size:24px}
+.sb-story-a{top:8%;left:34%;font-size:24px}
+.sb-story-b{bottom:8%;right:5%}
+.sb-reviews-a{top:12%;left:4%}
+.sb-reviews-b{bottom:12%;right:5%;font-size:24px}
+.sb-faq-a{top:12%;right:3%}
+.sb-faq-b{bottom:9%;left:4%;font-size:23px}
+.sb-visit-a{top:12%;left:8%}
+.sb-visit-b{top:40%;right:8%;font-size:25px}
+.sb-footer{top:12%;right:12%;font-size:20px}
+.hero-photo-caption{
+  left:16px;
+  right:16px;
+  bottom:16px;
+  padding:0;
+  border:0;
+  border-radius:0;
+  background:transparent;
+  backdrop-filter:none;
+  box-shadow:none;
+  text-shadow:0 2px 7px rgba(0,0,0,.72);
+}
+.hero-photo-caption span,.hero-photo-caption strong{color:#fff;text-shadow:0 2px 7px rgba(0,0,0,.78)}
+.hero-photo.hero-photo-square,.hero-photo.hero-photo-square>img{
+  aspect-ratio:1/1;
+}
+.hero-photo.hero-photo-square>img{
+  object-fit:contain;
+  object-position:center;
+  background:#eeeade;
+}
+@media(max-width:760px){
+  .site-butterfly{font-size:23px}
+  .sb-intro-a{top:7%;right:6%}
+  .sb-intro-b{bottom:5%;left:4%}
+  .sb-collection-a{top:2%;right:4%}
+  .sb-collection-b{bottom:2%;left:2%}
+  .sb-story-a{top:3%;left:7%}
+  .sb-story-b{bottom:4%;right:5%}
+  .sb-reviews-a{top:5%;left:3%}
+  .sb-reviews-b{bottom:5%;right:4%}
+  .sb-faq-a{top:4%;right:4%}
+  .sb-faq-b{bottom:4%;left:4%}
+  .sb-visit-a{top:5%;left:5%}
+  .sb-visit-b{top:35%;right:5%}
+  .sb-footer{top:5%;right:8%}
+  .hero-photo-caption{left:12px;right:12px;bottom:12px}
+}
+@media(prefers-reduced-motion:reduce){
+  .site-butterfly{animation:none!important}
+}
