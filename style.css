@@ -763,3 +763,34 @@ a{color:inherit;text-decoration:none}
 #colecao .gallery > .product-tall:first-child img{
   object-position:center top !important;
 }
+
+
+/* Enquadramento das fotos: prioriza a parte superior sem alterar os quadros */
+#colecao .gallery .product-card img,
+.story-product img,
+.story-photo img{object-position:center top}
+
+/* Fotos clicaveis e ampliacao responsiva */
+.photo-zoomable{cursor:zoom-in;touch-action:manipulation}
+.photo-viewer{
+ position:fixed;inset:0;width:100vw;height:100dvh;max-width:none;max-height:none;
+ margin:0;padding:clamp(14px,3vw,28px);border:0;background:rgba(18,23,19,.94);
+ color:#fff;overflow:hidden;align-items:center;justify-content:center;flex-direction:column
+}
+.photo-viewer[open]{display:flex}
+.photo-viewer::backdrop{background:rgba(18,23,19,.94)}
+.photo-viewer-image{
+ display:block;width:100%;height:calc(100% - 54px);max-width:1500px;
+ object-fit:contain;object-position:center;border-radius:4px
+}
+.photo-viewer-close{
+ position:absolute;top:max(12px,env(safe-area-inset-top));right:max(14px,env(safe-area-inset-right));
+ z-index:2;width:44px;height:44px;border:1px solid rgba(255,255,255,.7);
+ border-radius:50%;background:rgba(0,0,0,.38);color:#fff;font-size:30px;line-height:1;cursor:pointer
+}
+.photo-viewer-hint{margin:10px 0 0;color:rgba(255,255,255,.78);font-size:12px;text-align:center}
+@media(max-width:600px){
+ .photo-viewer{padding:12px}
+ .photo-viewer-image{height:calc(100% - 48px)}
+ .photo-viewer-close{width:42px;height:42px}
+}
