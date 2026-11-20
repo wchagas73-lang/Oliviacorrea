@@ -794,3 +794,14 @@ a{color:inherit;text-decoration:none}
  .photo-viewer-image{height:calc(100% - 48px)}
  .photo-viewer-close{width:42px;height:42px}
 }
+
+
+/* Ajusta apenas as duas fotos solicitadas, sem alterar o tamanho dos quadros */
+#colecao .gallery .product-card img[src*="maio-rosa"]{
+  object-fit:contain !important;
+  object-position:center !important;
+}
+.story-product img{
+  object-fit:contain !important;
+  object-position:center !important;
+}
