@@ -151,3 +151,13 @@ a{color:inherit;text-decoration:none}
   .product-wide{height:auto;aspect-ratio:1.4}
   .whatsapp-float span{font-size:11px}
 }
+/* Mascara as curvas cinzas laterais da arte original sem cortar o simbolo ou o nome */
+.brand,.footer-logo{position:relative}
+.brand:before,.brand:after,.footer-logo:before,.footer-logo:after{content:"";position:absolute;top:0;width:13%;height:42%;z-index:2;pointer-events:none}
+.brand:before,.footer-logo:before{left:0;background:linear-gradient(90deg,#fbfaf6 75%,transparent)}
+.brand:after,.footer-logo:after{right:0;background:linear-gradient(270deg,#fbfaf6 75%,transparent)}
+.footer-logo{display:inline-flex;width:125px;height:60px;align-items:center;justify-content:center}
+.footer-logo img{width:125px;height:60px;object-fit:contain;mix-blend-mode:multiply}
+.footer-logo:before{background:linear-gradient(90deg,#f8f7f1 75%,transparent)}
+.footer-logo:after{background:linear-gradient(270deg,#f8f7f1 75%,transparent)}
+@media(max-width:760px){.brand:before,.brand:after{height:42%}}
