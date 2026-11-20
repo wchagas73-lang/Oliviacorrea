@@ -161,3 +161,57 @@ a{color:inherit;text-decoration:none}
 .footer-logo:before{background:linear-gradient(90deg,#f8f7f1 75%,transparent)}
 .footer-logo:after{background:linear-gradient(270deg,#f8f7f1 75%,transparent)}
 @media(max-width:760px){.brand:before,.brand:after{height:42%}}
+
+
+/* Ajustes finais solicitados: avaliações sempre visíveis e WhatsApp apenas com ícone */
+.review-track{
+  display:grid;
+  grid-template-columns:repeat(3,minmax(0,1fr));
+  gap:14px;
+  overflow:visible;
+  max-width:100%;
+  padding:8px 0;
+  scroll-snap-type:none;
+  scrollbar-width:none;
+}
+.review-card{
+  min-width:0;
+  width:100%;
+  max-width:none;
+  flex:none;
+  scroll-snap-align:none;
+  padding:24px 22px;
+}
+.review-card p{font-size:18px}
+.whatsapp-float{
+  width:58px;
+  height:58px;
+  padding:0;
+  justify-content:center;
+  border-radius:50%;
+  gap:0;
+}
+.whatsapp-float .brand-icon{width:29px;height:29px}
+.hero-photo{
+  aspect-ratio:4/5;
+  overflow:hidden;
+}
+.hero-photo>img{
+  object-fit:cover;
+  object-position:center 28%;
+}
+@media(max-width:760px){
+  .review-track{
+    grid-template-columns:minmax(0,1fr);
+    gap:12px;
+  }
+  .review-card{padding:22px}
+  .hero-photo{
+    width:min(100%,430px);
+    aspect-ratio:4/5;
+    height:auto;
+    max-height:none;
+  }
+  .hero-photo>img{object-position:center 25%}
+  .whatsapp-float{width:56px;height:56px;padding:0}
+}
