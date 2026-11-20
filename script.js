@@ -34,3 +34,14 @@ if("IntersectionObserver" in window && !window.matchMedia("(prefers-reduced-moti
   },{threshold:0.12,rootMargin:"0px 0px -35px 0px"});
   revealItems.forEach(item=>revealObserver.observe(item));
 }
+
+
+/* Evita deixar um quadrado vazio na colecao se uma imagem estiver indisponivel */
+document.querySelectorAll("#colecao .gallery .product-card img").forEach(image=>{
+  const hideEmptyCard=()=>{
+    const card=image.closest(".product-card");
+    if(card) card.hidden=true;
+  };
+  if(image.complete && image.naturalWidth===0) hideEmptyCard();
+  image.addEventListener("error",hideEmptyCard);
+});
