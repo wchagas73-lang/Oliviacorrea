@@ -796,12 +796,13 @@ a{color:inherit;text-decoration:none}
 }
 
 
-/* Ajusta apenas as duas fotos solicitadas, sem alterar o tamanho dos quadros */
+/* Enquadramento das duas pecas: preencher os mesmos quadros das demais fotos,
+   priorizando a roupa e evitando cortes desnecessarios */
 #colecao .gallery .product-card img[src*="maio-rosa"]{
-  object-fit:contain !important;
-  object-position:center !important;
+  object-fit:cover !important;
+  object-position:center 42% !important;
 }
 .story-product img{
-  object-fit:contain !important;
-  object-position:center !important;
+  object-fit:cover !important;
+  object-position:center 38% !important;
 }
