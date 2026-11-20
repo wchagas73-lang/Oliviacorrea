@@ -1,0 +1,34 @@
+name: Extrair fotos da Olivia Corrêa
+
+on:
+  workflow_dispatch:
+  push:
+    paths:
+      - "olivia-correa-fotos.zip"
+      - ".github/workflows/extrair-fotos-olivia.yml"
+
+permissions:
+  contents: write
+
+jobs:
+  extrair-fotos:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Baixar repositório
+        uses: actions/checkout@v4
+      - name: Extrair imagens para assets
+        run: |
+          mkdir -p assets
+          unzip -o olivia-correa-fotos.zip -d .
+          find assets -type f
+      - name: Salvar imagens no GitHub
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add assets
+          if git diff --cached --quiet; then
+            echo "Nenhuma alteração nas fotos."
+          else
+            git commit -m "Adiciona fotos da Olivia Corrêa"
+            git push
+          fi
