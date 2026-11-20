@@ -45,3 +45,38 @@ document.querySelectorAll("#colecao .gallery .product-card img").forEach(image=>
   if(image.complete && image.naturalWidth===0) hideEmptyCard();
   image.addEventListener("error",hideEmptyCard);
 });
+
+
+/* Visualizacao ampliada acessivel para fotos do site */
+(()=>{
+  const images=[...document.querySelectorAll(".hero-photo img, #colecao .gallery .product-card img, .story-product img, .story-photo img")];
+  if(!images.length) return;
+  const viewer=document.createElement("dialog");
+  viewer.className="photo-viewer";
+  viewer.setAttribute("aria-label","Foto ampliada");
+  viewer.innerHTML='<button class="photo-viewer-close" type="button" aria-label="Fechar foto ampliada">×</button><img class="photo-viewer-image" alt=""><p class="photo-viewer-hint">Toque fora da foto ou no X para fechar</p>';
+  document.body.appendChild(viewer);
+  const enlarged=viewer.querySelector(".photo-viewer-image");
+  const closeButton=viewer.querySelector(".photo-viewer-close");
+  const closeViewer=()=>{if(viewer.open)viewer.close();};
+  images.forEach(image=>{
+    image.classList.add("photo-zoomable");
+    image.setAttribute("tabindex","0");
+    image.setAttribute("role","button");
+    image.setAttribute("aria-label",(image.alt||"Foto")+". Pressione Enter para ampliar.");
+    const openViewer=()=>{
+      enlarged.src=image.currentSrc||image.src;
+      enlarged.alt=image.alt||"Foto ampliada";
+      if(typeof viewer.showModal==="function") viewer.showModal();
+      else viewer.setAttribute("open","");
+      closeButton.focus();
+    };
+    image.addEventListener("click",openViewer);
+    image.addEventListener("keydown",event=>{
+      if(event.key==="Enter"||event.key===" "){event.preventDefault();openViewer();}
+    });
+  });
+  closeButton.addEventListener("click",closeViewer);
+  viewer.addEventListener("click",event=>{if(event.target===viewer)closeViewer();});
+  viewer.addEventListener("close",()=>enlarged.removeAttribute("src"));
+})();
