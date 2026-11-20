@@ -37,11 +37,11 @@ a{color:inherit;text-decoration:none}
 .collection{padding-top:30px}
 .section-heading{display:flex;align-items:end;justify-content:space-between;margin-bottom:35px}
 .section-heading h2{font-size:38px;margin:12px 0 0}
-.gallery{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:18px}
-.product-card{height:360px;min-width:0;position:relative;overflow:hidden;background:#e8e6dc}
+.gallery{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));grid-auto-flow:dense;gap:12px}
+.product-card{height:280px;min-width:0;position:relative;overflow:hidden;background:transparent}
 .product-card img{display:block;width:100%;height:100%;object-fit:cover;transition:transform .5s}
 .product-card:hover img{transform:scale(1.035)}
-.product-tall{grid-row:span 2;height:738px}
+.product-tall{grid-row:span 2;height:572px}
 .product-wide{grid-column:span 2}
 .product-label{position:absolute;bottom:14px;left:14px;right:14px;background:#faf9f0ed;padding:12px 15px;display:flex;flex-direction:column;gap:4px}
 .product-label span{font-size:9px;letter-spacing:.1em;color:#818b76;text-transform:uppercase}
@@ -121,9 +121,9 @@ a{color:inherit;text-decoration:none}
   .intro{padding-bottom:38px}
   .section-heading{align-items:flex-start;gap:15px;flex-direction:column}
   .section-heading h2{font-size:33px}
-  .gallery{grid-template-columns:repeat(2,minmax(0,1fr));gap:10px}
-  .product-card{height:clamp(205px,64vw,280px)}
-  .product-tall{height:auto;min-height:0;aspect-ratio: .72;grid-row:span 2}
+  .gallery{grid-template-columns:repeat(2,minmax(0,1fr));grid-auto-flow:dense;gap:8px}
+  .product-card{height:clamp(175px,48vw,235px)}
+  .product-tall{height:auto;min-height:0;aspect-ratio:.72;grid-row:span 2}
   .product-wide{grid-column:span 2;height:auto;aspect-ratio:1.65}
   .product-label{left:8px;right:8px;bottom:8px;padding:9px}
   .product-label b{font-size:15px}
@@ -665,14 +665,14 @@ a{color:inherit;text-decoration:none}
 #colecao .gallery .product-hero-duplicate{
   grid-column:1;
   grid-row:3;
-  height:360px;
+  height:280px;
   min-height:0;
 }
 @media(max-width:760px){
   #colecao .gallery .product-hero-duplicate{
     grid-column:1;
     grid-row:3;
-    height:clamp(205px,64vw,280px);
+    height:clamp(175px,48vw,235px);
     aspect-ratio:auto;
   }
 }
@@ -699,4 +699,31 @@ a{color:inherit;text-decoration:none}
 }
 @media(prefers-reduced-motion:reduce){
   #colecao .gallery .gallery-butterfly{animation:none!important}
+}
+
+
+/* Compacta a colecao em duas colunas e elimina celulas vazias */
+#colecao .gallery{
+  grid-template-columns:repeat(2,minmax(0,1fr)) !important;
+  grid-auto-flow:dense;
+  align-items:stretch;
+  background:transparent !important;
+}
+#colecao .gallery .product-card{
+  min-width:0;
+  background:transparent !important;
+}
+#colecao .gallery .product-card img{
+  background:transparent;
+}
+@media(min-width:761px){
+  #colecao .gallery .product-card{height:280px}
+  #colecao .gallery .product-tall{height:572px}
+  #colecao .gallery .product-hero-duplicate{height:280px}
+}
+@media(max-width:760px){
+  #colecao .gallery{gap:8px !important}
+  #colecao .gallery .product-card{height:clamp(175px,48vw,235px)}
+  #colecao .gallery .product-tall{height:auto;aspect-ratio:.72;grid-row:span 2}
+  #colecao .gallery .product-hero-duplicate{height:clamp(175px,48vw,235px)}
 }
