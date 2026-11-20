@@ -264,3 +264,20 @@ a{color:inherit;text-decoration:none}
     object-position:center;
   }
 }
+
+
+/* Hero mais limpo: sem moldura e sem flores decorativas ao redor da foto */
+.hero-photo:before{content:none;display:none}
+.hero .decor{display:none}
+.hero-note{display:flex;align-items:center;gap:10px}
+.hero-fashion-icon{
+  width:34px;
+  height:34px;
+  flex:0 0 34px;
+  fill:none;
+  stroke:#89956b;
+  stroke-width:1.45;
+  stroke-linecap:round;
+  stroke-linejoin:round;
+}
+.hero-note .tiny-flower{display:none}
