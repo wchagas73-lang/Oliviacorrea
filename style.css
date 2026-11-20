@@ -238,3 +238,29 @@ a{color:inherit;text-decoration:none}
 @media(max-width:760px){
   .product-label{padding:9px}
 }
+
+
+/* Enquadramento da primeira foto: mostrar a imagem inteira sem cortes */
+.hero-photo{
+  aspect-ratio:4/5;
+  background:transparent;
+  overflow:hidden;
+}
+.hero-photo>img{
+  width:100%;
+  height:100%;
+  object-fit:contain;
+  object-position:center;
+}
+@media(max-width:760px){
+  .hero-photo{
+    width:min(100%,430px);
+    aspect-ratio:4/5;
+    height:auto;
+    max-height:none;
+  }
+  .hero-photo>img{
+    object-fit:contain;
+    object-position:center;
+  }
+}
